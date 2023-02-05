@@ -163,20 +163,20 @@
     <nav>
         
         <div class="logo">
-            <h4 class="Starbikes"><a href="Index.html">daniel</a></h4>
+            <h4 class="Starbikes"><a href="Index.php">daniel</a></h4>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="Index.html">Home</a>
+                <a href="Index.php">Home</a>
             </li>
             <li>
-                <a href="Index2.html">Hobbies</a>
+                <a href="Index2.php">Hobbies</a>
             </li>
             <li>
-                <a href="Index3.html">me</a>
+                <a href="Index3.php">me</a>
             </li>
             <li>
-                <a href="Index4.html">res</a>
+                <a href="Index4.php">res</a>
             </li>
         </ul>
     </nav>
@@ -196,7 +196,7 @@
         <div class="container">
             <div class="center">
               <div class="button">
-                <a href="JS1.html" target="_blank" rel="noopener noreferrer" class="btn2">click here for a js slideshow</a> 
+                <a href="JS1.php" target="_blank" rel="noopener noreferrer" class="btn2">click here for a js slideshow</a> 
             </div>
             </div>
         </div>
@@ -204,7 +204,7 @@
         <div class="container">
             <div class="center">
               <div class="button">
-                <a href="progbar.html" target="_blank" rel="noopener noreferrer" class="btn2">click here for a progbar</a> 
+                <a href="progbar.php" target="_blank" rel="noopener noreferrer" class="btn2">click here for a progbar</a> 
             </div>
             </div>
         </div>

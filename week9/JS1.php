@@ -115,19 +115,19 @@ a{
 <div class="mySlides fade">
   
   <img src="sld1.jpg" style="width:100%">
-  <div class="text"><a href ="Index4.html">Click here to go back</a></div>
+  <div class="text"><a href ="Index4.php">Click here to go back</a></div>
 </div>
 
 <div class="mySlides fade">
   
   <img src="sld2.jpg" style="width:100%">
-  <div class="text"><a href="Index4.html">Click here to go back</a></div>
+  <div class="text"><a href="Index4.php">Click here to go back</a></div>
 </div>
 
 <div class="mySlides fade">
  
   <img src="sld3.jpg" style="width:100%">
-  <div class="text"><a href="Index4.html">Click here to go back</a></div>
+  <div class="text"><a href="Index4.php">Click here to go back</a></div>
 </div>
 
 </div>

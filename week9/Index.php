@@ -151,20 +151,20 @@
     <nav>
         
         <div class="logo">
-            <h4 class="Starbikes"><a href="Index.html">daniel</a></h4>
+            <h4 class="Starbikes"><a href="Index.php">daniel</a></h4>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="Index.html">Home</a>
+                <a href="Index.php">Home</a>
             </li>
             <li>
-                <a href="Index2.html">Hobbies</a>
+                <a href="Index2.php">Hobbies</a>
             </li>
             <li>
-                <a href="Index3.html">me</a>
+                <a href="Index3.php">me</a>
             </li>
             <li>
-                <a href="Index4.html">res</a>
+                <a href="Index4.php">res</a>
             </li>
         </ul>
     </nav>
@@ -176,7 +176,7 @@
         <div class="container">
             <div class="center">
               <div class="button">
-                <a href="Index3.html" class="btn1">learn more</a> 
+                <a href="Index3.php" class="btn1">learn more</a> 
             </div>
             </div>
         </div>
