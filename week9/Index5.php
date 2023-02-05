@@ -19,7 +19,7 @@
         }
 
         body.body1  {
-        background: url(b4.jpg) no-repeat center center fixed; 
+        background: url(b7.jpg) no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -154,14 +154,28 @@
         color: orange;
         padding-top: 20px;
         display: none;
-    }
+        }
+
+        .section1{
+        height: 300px;
+        position: relative;
+        background-color: white no-repeat center center fixed;
+        }
+
+        h2.formtitle{
+        color: white;
+        text-transform: lowercase;
+        font-size: 20px;
+        text-align: center;
+        margin-left: 0x;
+        font-family: 'Ubuntu', sans-serif;
+        }
 
 </style>
 </head>
 
 <body class="body1">
     <nav>
-        
         <div class="logo">
             <h4 class="Starbikes"><a href="Index.php">daniel</a></h4>
         </div>
@@ -183,39 +197,105 @@
 
     
 
-        <h1 class="hdrtxt1">resources and others</h1>
+        <h1 class="hdrtxt1">rate my website!</h1>
+        <br>
+        <br>
+        
+        <?php
+        // define variables and set to empty values
+        $nameErr = $emailErr = $genderErr = $websiteErr = "";
+        $name = $email = $gender = $comment = $website = "";
 
-        <div class="container">
-            <div class="center">
-              <div class="button">
-                <a href="https://www.notion.so/WEBPROG-Resources-Links-cbec59dc23cf4bc9bef46b904cda8d89" target="_blank" rel="noopener noreferrer" class="btn1">link for resources</a> 
-            </div>
-            </div>
-        </div>
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["name"])) {
+            $nameErr = "Name is required";
+        } else {
+            $name = test_input($_POST["name"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+            $nameErr = "Only letters and white space allowed";
+            }
+        }
+        
+        if (empty($_POST["email"])) {
+            $emailErr = "Email is required";
+        } else {
+            $email = test_input($_POST["email"]);
+            // check if e-mail address is well-formed
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format";
+            }
+        }
+            
+        if (empty($_POST["website"])) {
+            $website = "";
+        } else {
+            $website = test_input($_POST["website"]);
+            // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+            if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+            $websiteErr = "Invalid URL";
+            }
+        }
 
-        <div class="container">
-            <div class="center">
-              <div class="button">
-                <a href="JS1.php" target="_blank" rel="noopener noreferrer" class="btn2">click here for a js slideshow</a> 
-            </div>
-            </div>
-        </div>
+        if (empty($_POST["comment"])) {
+            $comment = "";
+        } else {
+            $comment = test_input($_POST["comment"]);
+        }
 
-        <div class="container">
-            <div class="center">
-              <div class="button">
-                <a href="progbar.php" target="_blank" rel="noopener noreferrer" class="btn2">click here for a progbar</a> 
-            </div>
-            </div>
-        </div>
+        if (empty($_POST["gender"])) {
+            $genderErr = "Gender is required";
+        } else {
+            $gender = test_input($_POST["gender"]);
+        }
+        }
 
-        <div class="container">
-            <div class="center">
-              <div class="button">
-                <a href="Index5.php" target="_blank" rel="noopener noreferrer" class="btn2">rate my website!</a> 
-            </div>
-            </div>
+        function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+        }
+        ?>
+
+        <div class= "section1">
+        <center>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+        Name: <input type="text" name="name" value="<?php echo $name;?>">
+        <span class="error">* <?php echo $nameErr;?></span>
+        <br><br>
+        E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+        <span class="error">* <?php echo $emailErr;?></span>
+        <br><br>
+        Website: <input type="text" name="website" value="<?php echo $website;?>">
+        <span class="error"><?php echo $websiteErr;?></span>
+        <br><br>
+        Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+        <br><br>
+        Gender:
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
+        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
+        <span class="error">* <?php echo $genderErr;?></span>
+        <br><br>
+        <input type="submit" name="submit" value="Submit">  
+        </form>
+        </center>
         </div>
+        <?php
+        $string = "Your Input:";
+        echo '<p><center><span style="color: white; font-size: 30px;"> ' . $string.  '</span></center></p>';
+        echo $name;
+        echo "<br>";
+        echo $email;
+        echo "<br>";
+        echo $website;
+        echo "<br>";
+        echo $comment;
+        echo "<br>";
+        echo $gender;
+        ?>
+
 
 
     
