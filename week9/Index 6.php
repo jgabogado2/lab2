@@ -197,13 +197,13 @@
 
     
 
-        <h1 class="hdrtxt1">rate my website!</h1>
+        <h1 class="hdrtxt1">who rated my webpage?</h1>
         <br>
         <br>
         
         <?php
-        echo "<table style='border: solid 1px black;'>";
-        echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+        echo "<center><table style='border: solid 1px white;'>/center>";
+        echo "<center><tr><th>Id</th><th>Name</th><th>Email</th><th>Comments</th></tr></center>";
 
         class TableRows extends RecursiveIteratorIterator {
             function __construct($it) {
@@ -211,7 +211,7 @@
             }
 
             function current() {
-                return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                return "<td style='width: 150px; border: 1px solid white;'>" . parent::current(). "</td>";
             }
 
             function beginChildren() {
