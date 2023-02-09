@@ -282,24 +282,46 @@
         </form>
         </center>
         </div>
+
         <?php
-        $string = "Your Input:";
-        echo '<p><center><span style="color: white; font-size: 30px;"> ' . $string.  '</span></center></p>';
-        echo '<p><center><span style="color: white; font-size: 20px;"> ' . $name.  '</span></center></p>';
-        echo "<br>";
-        echo '<p><center><span style="color: white; font-size: 20px;"> ' . $email.  '</span></center></p>';
-        echo "<br>";
-        echo '<p><center><span style="color: white; font-size: 20px;"> ' . $website.  '</span></center></p>';
-        echo "<br>";
-        echo '<p><center><span style="color: white; font-size: 20px;"> ' . $comment.  '</span></center></p>';
-        echo "<br>";
-        echo '<p><center><span style="color: white; font-size: 20px;"> ' . $gender.  '</span></center></p>';
-        echo "<br>";
-        echo "<br>";
+        $conn = mysqli_connect("localhost", "root", "", "rating");
+
+        if($conn === false){
+            die("ERROR: Could not connect. "
+                . mysqli_connect_error());
+        }
+
+        $name =  $_REQUEST['name'];
+        $email = $_REQUEST['email'];
+        $website =  $_REQUEST['website'];
+        $comment = $_REQUEST['comment'];
+        $gender = $_REQUEST['gender'];
+
+        $sql = "INSERT INTO myRatings (name, email, website, comment, gender)  VALUES ('$name',
+            '$email','$website','$comment','$gender')";
+
+        if(mysqli_query($conn, $sql)){
+            $string = "Your Input:";
+            echo '<p><center><span style="color: white; font-size: 30px;"> ' . $string.  '</span></center></p>';
+            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $name.  '</span></center></p>';
+            echo "<br>";
+            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $email.  '</span></center></p>';
+            echo "<br>";
+            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $website.  '</span></center></p>';
+            echo "<br>";
+            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $comment.  '</span></center></p>';
+            echo "<br>";
+            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $gender.  '</span></center></p>';
+            echo "<br>";
+            echo "<br>";
+        } else{
+            echo "ERROR: Hush! Sorry $sql. "
+                . mysqli_error($conn);
+        }
+        
+        // Close connection
+        mysqli_close($conn);
         ?>
-
-
-
     
 </body>
 </html>

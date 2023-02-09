@@ -103,6 +103,12 @@
         position: relative;
         }
 
+        .container-bottom{
+        margin-bottom: 100px;
+        height: 100px;
+        position: relative;
+        }
+
         .center {
         margin: 0;
         position: absolute;
@@ -209,7 +215,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container-bottom">
             <div class="center">
               <div class="button">
                 <a href="Index5.php" target="_blank" rel="noopener noreferrer" class="btn2">rate my website!</a> 
