@@ -284,7 +284,7 @@
         </div>
 
         <?php
-        $conn = mysqli_connect("localhost", "webprogmi212", "webprogmi212", "jgabogado_myratings");
+        $conn = mysqli_connect("localhost", "webprogmi212", "webprogmi212", "webprogmi212");
 
         if($conn === false){
             die("ERROR: Could not connect. "
@@ -297,7 +297,7 @@
         $comment = $_REQUEST['comment'];
         $gender = $_REQUEST['gender'];
 
-        $sql = "INSERT INTO myRatings (name, email, website, comment, gender)  VALUES ('$name',
+        $sql = "INSERT INTO jgabogado_myratings (name, email, website, comment, gender)  VALUES ('$name',
             '$email','$website','$comment','$gender')";
 
         if(mysqli_query($conn, $sql)){
