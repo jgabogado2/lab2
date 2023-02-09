@@ -231,7 +231,7 @@
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT id, name, email comment FROM jgabogado_myratings");
+            $stmt = $conn->prepare("SELECT id, name, email, comment FROM jgabogado_myratings");
             $stmt->execute();
 
             // set the resulting array to associative
