@@ -202,126 +202,51 @@
         <br>
         
         <?php
-        // define variables and set to empty values
-        $nameErr = $emailErr = $genderErr = $websiteErr = "";
-        $name = $email = $gender = $comment = $website = "";
+        echo "<table style='border: solid 1px black;'>";
+        echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["name"])) {
-            $nameErr = "Name is required";
-        } else {
-            $name = test_input($_POST["name"]);
-            // check if name only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-            $nameErr = "Only letters and white space allowed";
+        class TableRows extends RecursiveIteratorIterator {
+            function __construct($it) {
+                parent::__construct($it, self::LEAVES_ONLY);
             }
-        }
-        
-        if (empty($_POST["email"])) {
-            $emailErr = "Email is required";
-        } else {
-            $email = test_input($_POST["email"]);
-            // check if e-mail address is well-formed
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
+
+            function current() {
+                return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
             }
-        }
-            
-        if (empty($_POST["website"])) {
-            $website = "";
-        } else {
-            $website = test_input($_POST["website"]);
-            // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-            if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-            $websiteErr = "Invalid URL";
+
+            function beginChildren() {
+                echo "<tr>";
+            }
+
+            function endChildren() {
+                echo "</tr>" . "\n";
             }
         }
 
-        if (empty($_POST["comment"])) {
-            $comment = "";
-        } else {
-            $comment = test_input($_POST["comment"]);
-        }
+        $servername = "localhost";
+        $username = "webprogmi212";
+        $password = "webprogmi212";
+        $dbname = "webprogmi212";
 
-        if (empty($_POST["gender"])) {
-            $genderErr = "Gender is required";
-        } else {
-            $gender = test_input($_POST["gender"]);
-        }
-        }
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT id, name, email comment FROM jgabogado_myratings");
+            $stmt->execute();
 
-        function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+            // set the resulting array to associative
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+                echo $v;
+            }
         }
+        catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        echo "</table>";
         ?>
 
-        <div class= "section1">
-        <center>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-        Name: <input type="text" name="name" value="<?php echo $name;?>">
-        <span class="error">* <?php echo $nameErr;?></span>
-        <br><br>
-        E-mail: <input type="text" name="email" value="<?php echo $email;?>">
-        <span class="error">* <?php echo $emailErr;?></span>
-        <br><br>
-        Website: <input type="text" name="website" value="<?php echo $website;?>">
-        <span class="error"><?php echo $websiteErr;?></span>
-        <br><br>
-        Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
-        <br><br>
-        Gender:
-        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
-        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
-        <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
-        <span class="error">* <?php echo $genderErr;?></span>
-        <br><br>
-        <input type="submit" name="submit" value="Submit">  
-        </form>
-        </center>
-        </div>
-
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "rating");
-
-        if($conn === false){
-            die("ERROR: Could not connect. "
-                . mysqli_connect_error());
-        }
-
-        $name =  $_REQUEST['name'];
-        $email = $_REQUEST['email'];
-        $website =  $_REQUEST['website'];
-        $comment = $_REQUEST['comment'];
-        $gender = $_REQUEST['gender'];
-
-        $sql = "INSERT INTO myRatings (name, email, website, comment, gender)  VALUES ('$name',
-            '$email','$website','$comment','$gender')";
-
-        if(mysqli_query($conn, $sql)){
-            $string = "Your Input:";
-            echo '<p><center><span style="color: white; font-size: 30px;"> ' . $string.  '</span></center></p>';
-            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $name.  '</span></center></p>';
-            echo "<br>";
-            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $email.  '</span></center></p>';
-            echo "<br>";
-            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $website.  '</span></center></p>';
-            echo "<br>";
-            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $comment.  '</span></center></p>';
-            echo "<br>";
-            echo '<p><center><span style="color: white; font-size: 20px;"> ' . $gender.  '</span></center></p>';
-            echo "<br>";
-            echo "<br>";
-        } else{
-            echo "ERROR: Hush! Sorry $sql. "
-                . mysqli_error($conn);
-        }
-        
-        // Close connection
-        mysqli_close($conn);
-        ?>
-    
 </body>
 </html>
