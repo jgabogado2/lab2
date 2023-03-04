@@ -10,166 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Gudea&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
-
-    <style>
-        *{
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-        }
-
-        body.body1  {
-        background: url(b4.jpg) no-repeat center center fixed; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background-color: white;
-        
-        }
-
-        nav{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        min-width: max-content;
-        font-family: 'Gudea', sans-serif;
-        height: 4ch
-        }
-
-        .logo{
-        
-        font-size: 50px;
-        padding-top: 2ch;
-        
-        }
-
-        .logo a{
-        color: white;
-        text-decoration: none;
-        letter-spacing: 20px;
-        text-transform: lowercase;
-        
-        }
-
-        .nav-links{
-        display: flex;
-        justify-content: space-around;
-        width: 35%;
-        padding-top: 5%;
-        text-transform: lowercase;
-        }
-
-        .nav-links li{
-        list-style: none;
-        display:inline;
-        padding: 10px 40px;
-        }
-
-        .nav-links a{
-        color: white;
-        text-decoration: none;
-        letter-spacing: 3px;
-        font-size: 25px;
-        display: flex;
-        padding-top: .5ch;
-        }
-
-        .nav-links a:hover {
-        color: rgb(255, 102, 0);
-        transition: 0.3s;
-        }
-
-        .hdr1{
-        position: absolute;
-        width: 1200px;
-        margin-left: 0px;
-        margin-top: 0px;
-        }
-
-        h1.hdrtxt1{
-        color: white;
-        text-transform: lowercase;
-        font-size: 70px;
-        text-align: center;
-        margin-top: 275px;
-        margin-left: 0x;
-        font-family: 'Ubuntu', sans-serif;
-        letter-spacing: 10px;
-
-        }
-        .container { 
-        height: 100px;
-        position: relative;
-        }
-
-        .container-bottom{
-        margin-bottom: 100px;
-        height: 100px;
-        position: relative;
-        }
-
-        .center {
-        margin: 0;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        }
-
-        .btn1 {
-        margin: auto;
-        border : 1px solid white;
-        padding : 10px 30px;
-        text-decoration: none;
-        color: white;
-        font-size: 13px;
-        text-transform: lowercase;
-        font-family: 'Lato', sans-serif;
-        letter-spacing: 3px; 
-        }
-
-        .btn2 {
-        margin: auto;
-        border : 1px solid white;
-        padding : 10px 30px;
-        text-decoration: none;
-        color: white;
-        font-size: 13px;
-        text-transform: lowercase;
-        font-family: 'Lato', sans-serif;
-        letter-spacing: 3px; 
-        }
-
-        .button a:hover{
-        color: rgb(255, 102, 0);
-        transition: 0.5s;
-        }
-        .Intro {
-        
-        
-        width: 100%;
-        padding-top: 5;
-        padding-bottom: 25%;
-        background-color: white;
-        
-        }
-
-        h1.hdrtxt2 {
-        color: orange;
-        padding-top: 20px;
-        display: none;
-    }
-
-</style>
+    <link rel="stylesheet" href="Style.css">
 </head>
 
-<body class="body1">
+<body class="body4">
     <nav>
         
         <div class="logo">
-            <h4 class="Starbikes"><a href="Index.php">daniel</a></h4>
+            <h4><a href="Index.php">daniel</a></h4>
         </div>
         <ul class="nav-links">
             <li>
@@ -186,8 +34,6 @@
             </li>
         </ul>
     </nav>
-
-    
 
         <h1 class="hdrtxt1">resources and others</h1>
 
@@ -223,7 +69,5 @@
             </div>
         </div>
 
-
-    
 </body>
 </html>
